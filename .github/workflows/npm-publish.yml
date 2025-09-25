@@ -9,10 +9,10 @@ on:                # when this workflow should be triggered
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # it will be run on our machine (self-hosted runner), where to run the job
+    runs-on: ubuntu-latest  # it will be run on GitHub-hosted runner
     strategy:
       matrix:  
-        node-version: [18.x]  # define which Node.js versions to test against (here 18.x)
+        node-version: [18.x]  # define which Node.js versions to test against
 
     steps:
       - uses: actions/checkout@v4  # fetch the source code of our repo in the environment
@@ -21,10 +21,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache : 'npm'
+          cache: 'npm'
 
-          
       - name: Install dependencies
         run: npm ci   # install dependencies in a clean way
-      
-      - run: console.log("Hello")  # restart the backend server with pm2
+
+
+      - name: Say hello
+        run: echo "Hello from GitHub Actions"
+
+      # - name: Restart backend with pm2 (optional if you deploy somewhere)
+      #   run: pm2 restart my-app
