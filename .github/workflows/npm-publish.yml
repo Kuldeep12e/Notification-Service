@@ -27,4 +27,4 @@ jobs:
       - name: Install dependencies
         run: npm ci   # install dependencies in a clean way
       
-      - run: pm2 restart backendServer  # restart the backend server with pm2
+      - run: npm run dev  # restart the backend server with pm2
