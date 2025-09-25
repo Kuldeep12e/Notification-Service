@@ -9,7 +9,7 @@ on:                # when this workflow should be triggered
 
 jobs:
   build:
-    runs-on: self-hosted  # it will be run on our machine (self-hosted runner), where to run the job
+    runs-on: ubuntu-latest  # it will be run on our machine (self-hosted runner), where to run the job
     strategy:
       matrix:  
         node-version: [18.x]  # define which Node.js versions to test against (here 18.x)
